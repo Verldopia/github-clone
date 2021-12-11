@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+}
+header {
+    padding: 1rem;
+    background-color: blanchedalmond;
+}
+header p {
+    padding: 1rem;
+}
+header,
+.weather,
+.covid-cases,
+.box-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+.box-header,
+.weather p {
+    gap: 2rem;
+    padding-right: 0;
+}
+.covid-cases img {
+    width: 2rem;
+}
+.box-logo {
+    display: flex;
+    flex-grow: 10;
+}
+.logo {
+    height: 3rem;
+    width: 3rem;
+    background-image: url(../media/images/github.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
