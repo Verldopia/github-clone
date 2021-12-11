@@ -4,6 +4,7 @@
             this.cacheElements();
             this.generateHtmlForWeather();
             this.generateHtmlForCovidCases();
+            this.eventListener();
         },
         cacheElements () {
             this.$weather = document.querySelector('.weather');
@@ -40,7 +41,13 @@
                 const cases = data.records[0].fields.cases;
                 this.$covidCases.innerHTML = `
                 <p>${cases}</p>
-                <img src="static/media/images/virus.png" alt="Presenting virus"></img>`
+                <img src="static/media/images/virus--white.png" alt="Presenting virus"></img>`
+            });
+        },
+        eventListener () {
+            const home = document.querySelector('.logo');
+            home.addEventListener('click', () => {
+                document.location.href = 'index.html';
             });
         }
     };

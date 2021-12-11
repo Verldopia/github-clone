@@ -1,9 +1,25 @@
 * {
     margin: 0;
 }
+h2 {
+    background-color: #58a6ff;
+    padding: 1rem 2rem;
+    color: #010409;
+    text-align: center;
+}
+body {
+    background-color: #010409;
+    color: rgb(201, 209, 217);
+    font-family: sofia-pro, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Header */
+
 header {
-    padding: 1rem;
-    background-color: blanchedalmond;
+    padding: 1rem 2rem;
+    background-color: #161b22;
 }
 header p {
     padding: 1rem;
@@ -20,19 +36,56 @@ header,
 .box-header,
 .weather p {
     gap: 2rem;
-    padding-right: 0;
 }
-.covid-cases img {
+.box-header img {
     width: 2rem;
+}
+.weather img {
+    width: 4rem;
 }
 .box-logo {
     display: flex;
     flex-grow: 10;
 }
 .logo {
-    height: 3rem;
-    width: 3rem;
-    background-image: url(../media/images/github.png);
+    height: 2.5rem;
+    width: 2.5rem;
+    background-image: url(../media/images/github--white.png);
     background-repeat: no-repeat;
     background-size: cover;
+}
+.logo:hover {
+    cursor: pointer;
+}
+
+/* Main */
+
+.box-users {
+    background-color: #0e1117;
+    max-width: 20rem;
+    height: 100vh;
+    border-right: 1px solid #30363d;
+}
+.box-users h2 {
+    max-width: 100%;
+    margin: 1rem 2rem;
+    margin-top: 0;
+    border-radius: 0 0 1rem 1rem;
+}
+.box-user {
+    padding: 2rem;
+    padding-bottom: 0;
+    display: flex;
+    gap: 1rem;
+}
+.box-user img,
+.box-user p:hover {
+    cursor: pointer;
+}
+.box-user:hover {
+    text-decoration: underline;
+}
+.box-text {
+    display: flex;
+    flex-direction: column;
 }

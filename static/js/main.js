@@ -2,47 +2,51 @@
     const app = {
         init () {
             this.cacheElements();
-            this.generateHtmlForWeather();
-            this.generateHtmlForCovidCases();
+            this.generateHtmlForUsers();
         },
         cacheElements () {
-            this.$weather = document.querySelector('.weather');
-            this.$covidCases = document.querySelector('.covid-cases');
+            this.$users = document.querySelector('.users');
         },
-        generateHtmlForWeather () {
-            fetch('http://api.weatherapi.com/v1/current.json?key=b50b7fae602444dab76165810211112&q=$Ghent', {
-                method: 'GET'
-            })
+        generateHtmlForUsers () {
+            fetch("static/data/pgm.json")
             .then(result => {
                 if (!result.ok) {
                     throw Error('ERROR! this API is not found!');
                 }
                 return result.json()
             })
-            .then(data => {
-                const weather = data.current;
-                this.$weather.innerHTML = `
-                <p>${weather.temp_c}°C</p>
-                <img src="${weather.condition.icon}" alt="Presenting current weather"></img>`
-            })
+            .then(data => this.generateUsers(data)) 
         },
-        generateHtmlForCovidCases () {
-            fetch('https://data.stad.gent/api/records/1.0/search/?dataset=dataset-of-cumulative-number-of-confirmed-cases-by-municipality&q=.', {
-                method: 'GET'
-            })
-            .then(result => {
-                if (!result.ok) {
-                    throw Error('ERROR! this API is not found!');
-                }
-                return result.json()
-            })
-            .then(data => {
-                const cases = data.records[0].fields.cases;
-                this.$covidCases.innerHTML = `
-                <p>${cases}</p>
-                <img src="static/media/images/virus.png" alt="Presenting virus"></img>`
-            });
-        }
+        generateUsers(user) {
+            const userHTML = user.map((use) => {
+                return `
+                <div class="box-user" data-user="${use.login.uuid}">
+                    <img class="is-img" src="${use.picture.thumbnail}">
+                    <div class="box-text">
+                        <p>${use.name.first} ${use.name.last}</p>
+                        <p>${use.login.username}</p>
+                    </div>
+                </div>`
+            }).join('')
+            this.$users.innerHTML = `<div class="box-user--all">${userHTML}</div>`;
+            this.generateListeners(user);
+        },
+        generateListeners (user) {
+            this.$uniqueUser = document.querySelectorAll('.box-user');
+            for (const $user of this.$uniqueUser) {
+                $user.addEventListener('click', () => {
+                    this.generateInfoForUser($user, user);
+                })
+            }
+        },
+        generateInfoForUser ($user, user) {
+            console.log(user)
+            const uniqueUser = user.map((use) => use.login.uuid)
+            for (const dataset of uniqueUser) {
+            if ($user.dataset.user === dataset) {
+                console.log(dataset)
+            }
+        }}
     };
     app.init()
 })();

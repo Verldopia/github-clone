@@ -1,0 +1,218 @@
+[
+    {
+        "name": {           
+            "first": "Lena",
+            "last": "Aubert"
+        },
+        "email": "lena.aubert@example.com",
+        "login": {
+            "uuid": "80cfe5ee-2f09-45dc-a9c4-b07b75b5054a",
+            "username": "crazypeacock150",
+            "password": "savannah",
+            "salt": "7aKxZViL",
+            "md5": "fc9c15f129d0b317a8ac75917cc60f58",
+            "sha1": "3717004936e3666fff70ca0e91450c9faf9aa261",
+            "sha256": "bd970e1bc517e16613d0d5da4eaee9fcb9bccb70017d55dcfb79191661aa805a"
+        },
+        "dob": {
+            "date": "1970-01-18T05:44:50.587Z",
+            "age": 51
+        },
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/women/44.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/women/44.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/women/44.jpg"
+        },
+        "quote": "Shrek is love, Shrek is life",
+        "teacher": true
+    },
+    {
+        "name": {    
+            "first": "Gládis",
+            "last": "Gonçalves"
+        },
+        "email": "gladis.goncalves@example.com",
+        "login": {
+        "uuid": "6776a36a-5d95-4a34-af39-f7daca17c9a9",
+        "username": "organicwolf534",
+        "password": "chelle",
+        "salt": "2LwMnp40",
+        "md5": "147c3295c5b205739cca9a818650ecf3",
+        "sha1": "9365184ab625f351e522c8f76f825c5195fccc82",
+        "sha256": "922f4f85770b01e288e72add768ad7490f94d8f3cc4d50544f7d110905314f86"
+        },
+        "dob": {
+        "date": "1990-08-27T20:28:40.712Z",
+        "age": 31
+        },
+        "picture": {
+        "large": "https://randomuser.me/api/portraits/women/75.jpg",
+        "medium": "https://randomuser.me/api/portraits/med/women/75.jpg",
+        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/75.jpg"
+        },
+        "quote": "Life is soup, i am fork",
+        "teacher": false
+    },
+    {
+        "name": {           
+            "first": "Alvar",
+            "last": "Hegstad"
+        },
+        "email": "alvar.hegstad@example.com",
+        "login": {
+            "uuid": "0549f808-aa8a-4a2d-be82-2cd35eeaa9a9",
+            "username": "orangedog262",
+            "password": "toyota",
+            "salt": "MPIPQkZR",
+            "md5": "a8b639d671fc9d50e73ba782b789d896",
+            "sha1": "c7a7d495d5ecf8e5f74f6342494613f44fdd21d2",
+            "sha256": "9ae6d738ff9e7c29185f34b221e6d703fe11b0a502e089c22362e69c1131f2c9"
+        },
+        "dob": {
+            "date": "1987-09-21T21:20:10.113Z",
+            "age": 34
+        },
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/men/21.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/men/21.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/men/21.jpg"
+        },
+        "quote": "Live, laugh, love",
+        "teacher": false
+    },
+    {
+        "name": {            
+            "first": "Pilar",
+            "last": "Hernandez"
+        },
+        "email": "pilar.hernandez@example.com",
+        "login": {
+            "uuid": "c6930b3a-cbc9-49bf-9b97-c54a5dd9f485",
+            "username": "lazysnake423",
+            "password": "mistress",
+            "salt": "RUIMR7hS",
+            "md5": "1dac82842f100bff7b0a83726c96e5b8",
+            "sha1": "3e3dfbadad77f684c6fc3d71b4ebc29301c77160",
+            "sha256": "6f6bcb78473d2cf7557551294d46d2cc5450a0a8a44b26c78e40e9f41b243e29"
+        },
+        "dob": {
+            "date": "1961-06-06T01:16:56.315Z",
+            "age": 60
+        },
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/women/32.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/women/32.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/women/32.jpg"
+        },
+        "quote": "I love feet",
+        "teacher": true
+    },
+    {
+        "name": {
+            "first": "Nelly",
+            "last": "Friis"
+        },
+        "email": "nelly.friis@example.com",
+        "login": {
+            "uuid": "b32142fc-a095-45f7-8f8e-8b1a9c4188ae",
+            "username": "tinylion764",
+            "password": "kokoko",
+            "salt": "cJvv7EI7",
+            "md5": "4f60185eddf877d154a63b6ea550f39f",
+            "sha1": "f7b364736c0a6aaaa44e69f14e5ab2854e24e45b",
+            "sha256": "6d86b47f4709a76e7ad7bc85c48a239a59f24d37f5a71ecb9a97721f26e62fba"
+        },
+        "dob": {
+            "date": "1948-06-28T19:35:06.687Z",
+            "age": 73
+        },
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/women/59.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/women/59.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/women/59.jpg"
+        },
+        "quote": "Pilar Hernandez is a weirdo",
+        "teacher": true
+    },
+    {
+        "name": {            
+            "first": "Brittany",
+            "last": "Young"
+        },
+        "email": "brittany.young@example.com",
+        "login": {
+            "uuid": "2f7c52ca-3681-418d-893b-294bf884ab15",
+            "username": "sadcat640",
+            "password": "cement",
+            "salt": "zIggF2sM",
+            "md5": "e8ee9841d4b19542b0ec7986e4b5d36b",
+            "sha1": "eb729f73474f4b28fef138b883da503ebdc13f8f",
+            "sha256": "79740f8f8a0a1b86b5243ad15fb85acb3392e76b53cc30bda30cabb41f6775ba"
+        },
+        "dob": {
+            "date": "1960-01-16T01:20:01.465Z",
+            "age": 61
+        },
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/women/93.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/women/93.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/women/93.jpg"
+        },
+        "quote": "My secret talent is getting tired without doing anything",
+        "teacher": false
+    },
+    {
+        "name": {           
+            "first": "Mikael",
+            "last": "Laakso"
+        },
+        "email": "mikael.laakso@example.com",
+        "login": {
+            "uuid": "9618674e-30dc-4c31-b5da-f0294ed49e0f",
+            "username": "smallmouse975",
+            "password": "elvis",
+            "salt": "na1UWpf9",
+            "md5": "07898a0be85488e3a7976223b94e9203",
+            "sha1": "2043c4ac2c855aac6b325a0036e38c5c409af56b",
+            "sha256": "dc6a92a3d43cb29494969197e71126b4cf9e0932d19af3b0385364089ac0bb56"
+        },
+        "dob": {
+            "date": "1946-01-01T21:25:24.759Z",
+            "age": 75
+        },
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/men/61.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/men/61.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/men/61.jpg"
+        },
+        "quote": "Epstein did'nt kill himself",
+        "teacher": false
+    },
+    {
+        "name": {            
+            "first": "Alexandra",
+            "last": "Silva"
+        },
+        "email": "alexandra.silva@example.com",
+        "login": {
+            "uuid": "0e56f7e1-0ea1-4aa3-8a87-e6b51d2bca6f",
+            "username": "lazytiger448",
+            "password": "lakeside",
+            "salt": "6PgQNlbM",
+            "md5": "979470e85667e921682492369afe1edb",
+            "sha1": "2f99cf28ed09ee73db0f0cdc544853b40d3ffc83",
+            "sha256": "de0c4c9d3999eebc61503baef88532a68b6e4f1a578d15a79c4eb0001c2ec830"
+        },
+        "dob": {
+            "date": "1984-11-02T19:41:00.945Z",
+            "age": 37
+        },
+        "picture": {
+            "large": "https://randomuser.me/api/portraits/women/9.jpg",
+            "medium": "https://randomuser.me/api/portraits/med/women/9.jpg",
+            "thumbnail": "https://randomuser.me/api/portraits/thumb/women/9.jpg"
+        },
+        "quote": "I live for two reasons. 1: I was born, 2: I haven't died yet.",
+        "teacher": false
+    }
+]
