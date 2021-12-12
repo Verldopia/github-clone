@@ -6,6 +6,10 @@ h2 {
     padding: 1rem 2rem;
     color: #010409;
     text-align: center;
+    max-width: 100%;
+    margin: 1rem 2rem;
+    margin-top: 0;
+    border-radius: 0 0 1rem 1rem;
 }
 body {
     background-color: #010409;
@@ -13,6 +17,7 @@ body {
     font-family: sofia-pro, sans-serif;
     font-size: 1.1rem;
     transition: all ease 0.2s;
+    overflow-x: hidden;
 }
 label {
     margin: 1.5rem;
@@ -26,8 +31,9 @@ label {
 
 header {
     height: 4rem;
-    padding: 1rem 2rem;
+    padding: 1rem 3rem 1rem 2rem;
     background-color: #161b22;
+    border-bottom: 1px solid #30363d;
 }
 header p {
     padding: 1rem;
@@ -44,7 +50,7 @@ header,
 }
 .covid-cases {
     position: absolute;
-    left: 20rem;
+    left: 15rem;
     padding-right: 1rem;
     background-color: #0e1117;
     border-radius: 1rem;
@@ -81,8 +87,8 @@ header,
 .user-light {
     background-color: #161b22;
 }
-#submit-city,
-#search-city {
+button,
+input {
     font-family: sofia-pro, sans-serif;
     font-size: 1.1rem;
     background-color: #c9d1d9;
@@ -93,11 +99,11 @@ header,
     border-right: 1px solid #30363d;
     transition: all ease 0.2s;
 }
-#search-city {
+button {
     border-radius: 0;
     margin-right: 0.3rem;
 }
-#search-city:hover {
+button:hover {
     cursor: pointer;
     background-color: #afb4b9;
 }
@@ -123,17 +129,29 @@ header,
 
 /* Main */
 
-.box-users {
+main {
+    display: flex;
+}
+.box-github--main {
+    flex-grow: 1;
+}
+.box-users,
+.box-github--users {
     background-color: #0e1117;
-    max-width: 20rem;
-    height: 100vh;
+    max-width: 23rem;
+    width: 100%;
+    height: calc(100vh - 6rem - 1px);
     border-right: 1px solid #30363d;
 }
-.box-users h2 {
-    max-width: 100%;
-    margin: 1rem 2rem;
-    margin-top: 0;
-    border-radius: 0 0 1rem 1rem;
+.box-github--users {
+    border-left: 1px solid #30363d;
+    border-right: none;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: calc(100vh - 6rem - 1px);
+}
+.box-github--users p {
+    align-self: center;
 }
 .box-user {
     padding: 1rem 2rem; 
@@ -150,4 +168,26 @@ header,
 .box-text {
     display: flex;
     flex-direction: column;
+}
+.box-search--users {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+}
+.box-search--users input,
+.box-search--users button {
+    max-width: 8rem;
+}
+.box-github--users label {
+    display: block;
+    text-align: center;
+    padding-top: 0.5rem;
+    margin: 1rem 2rem 0.5rem;
+}
+.is-img {
+    width: 3rem;
+}
+.box-github--search {
+    background-color: #161b22;
 }

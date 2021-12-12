@@ -22,7 +22,7 @@
             })
             .then(data => {
                 this.$weather.innerHTML = `
-                <p>${data.location.name}, ${data.location.country}: <span class="temp">${data.location.tz_id.includes("Europe")  ? data.current.temp_c + "°C": data.current.temp_f + "°F"}</span></p>
+                <p>${data.location.name}, ${data.location.country}: <span class="temp">${data.location.country.includes('United States of America') ? data.current.temp_f + "°F": data.current.temp_c + "°C"}</span></p>
                 <img src="${data.current.condition.icon}" alt="Presenting current weather"></img>`
             })
         },
