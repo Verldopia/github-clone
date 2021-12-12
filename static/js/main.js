@@ -54,13 +54,14 @@
                 return result.json()
             })
             .then(data => {
-                this.generateHtmlForRepositories(data)
+                this.generateHtmlForRepositories(data, username)
                 this.fetchGithubFollowers(username)
             })
         },
-        generateHtmlForRepositories (data) {
+        generateHtmlForRepositories (data, username) {
             const amountResults = data.length;
             const reposHTML = data.map((rep) => {
+
                 return `
                 <div class="box-repos">
                     <div class="repos--titles">
@@ -68,20 +69,27 @@
                         <p>${rep.description === null ? 'No description available' : rep.description}</p>
                     </div>
                     <div class="repos--smaller-info">
-                        <p>${rep.updated_at}</p>
                         <p>${rep.language === null ? 'Unknown language' : rep.language}</p>
+                        <p>Last modified: ${new Date(rep.updated_at).toLocaleDateString()}</p>
                         <p>${rep.visibility}</p>
-                        <p>${rep.default_branch}</p>
-                        <p>${rep.license === null ? 'No License!' : rep.license.name}</p>
+                        <p>${rep.license === null ? 'No License' : rep.license.name}</p>
                         <p class="p-size">${rep.size > 999 ? (rep.size / 1000).toFixed(2) + ' MB' : rep.size + ' kB'}</p>
                     </div>
                 </div>`
             }).join('');
-            this.$h3Repos.innerHTML = `${amountResults} repository results.`;
+            this.$h3Repos.innerHTML = `${amountResults} repository results for ${username}.`;
             this.$githubRepos.innerHTML = reposHTML;
+
+
+            
+
+
+
+
+
         },
         async fetchGithubFollowers (username) {
-            console.log(username)
+            console.log('current user: ' + username)
             await fetch (` https://api.github.com/users/${username}/followers?page=1&per_page=100`, {
                 method: 'GET'
             })
@@ -103,7 +111,6 @@
                 </div>`
             } else {
                const followersHTML = followers.map((fol) => {
-                console.log(fol)
                 return `
                 <div class="box-follower">
                     <img src="${fol.avatar_url}">
@@ -113,8 +120,8 @@
             this.$githubFollowers.innerHTML = `<div class="container-followers">${followersHTML}</div>`; 
             }
         },
-        async fetchGithubUsers (userName = "pgm-michielwillems") {
-            await fetch(`https://api.github.com/search/users?sort=desc&page=1&per_page=100&q=${userName}`, {
+        async fetchGithubUsers (username = "pgm-michielwillems") {
+            await fetch(`https://api.github.com/search/users?sort=desc&page=1&per_page=100&q=${username}`, {
                 method: 'GET'
             })
             .then(result => {
@@ -145,7 +152,7 @@
         },
         generateListenerGithub (data) {
             this.$uniqueUser = document.querySelectorAll('.box-user box-github');
-                console.log(this.$uniqueUser.dataset.user)
+                // console.log(this.$uniqueUser.dataset.user)
         },
         generateListeners () {
             this.$btn = document.getElementById("search-user");

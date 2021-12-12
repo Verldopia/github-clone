@@ -236,3 +236,24 @@ main {
     margin: 2rem;
     border-radius: 1rem;
 }
+.container-followers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 2rem;
+}
+.box-follower {
+    position: relative;
+}
+.box-follower img {
+    width: 10rem;
+}
+.box-follower p {
+    position: absolute;
+    background-color: rgba(47, 53, 60, 0.80);
+    left: 0rem;
+    bottom: 0rem;
+    padding: 0.5rem;
+    width: 9rem;
+}
