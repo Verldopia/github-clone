@@ -6,10 +6,14 @@ h2 {
     padding: 1rem 2rem;
     color: #010409;
     text-align: center;
-    max-width: 100%;
+    max-width: 14rem;
     margin: 1rem 2rem;
     margin-top: 0;
     border-radius: 0 0 1rem 1rem;
+}
+h3 {
+    color: #4f93e0;
+    font-size: 1.3rem;
 }
 body {
     background-color: #010409;
@@ -50,7 +54,7 @@ header,
 }
 .covid-cases {
     position: absolute;
-    left: 15rem;
+    left: 14rem;
     padding-right: 1rem;
     background-color: #0e1117;
     border-radius: 1rem;
@@ -132,13 +136,10 @@ button:hover {
 main {
     display: flex;
 }
-.box-github--main {
-    flex-grow: 1;
-}
 .box-users,
 .box-github--users {
     background-color: #0e1117;
-    max-width: 23rem;
+    max-width: 22rem;
     width: 100%;
     height: calc(100vh - 6rem - 1px);
     border-right: 1px solid #30363d;
@@ -190,4 +191,48 @@ main {
 }
 .box-github--search {
     background-color: #161b22;
+}
+.box-github--main {
+    border-radius: 1rem;
+    width: calc(100vw - 50rem);
+    max-height: calc(100vh - 17rem);
+    overflow-y: auto;
+    margin: 1rem 2rem;
+    border: 1px solid #30363d;
+}
+.box-repos {
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid #30363d;
+}
+.container--main {
+    flex-grow: 1;
+}
+.repos--smaller-info {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    font-size: 0.9rem;
+}
+.repos--titles {
+    padding: 0 1rem;
+}
+.h3-main {
+    padding: 1rem 3.5rem 0;
+}
+.h3-repos:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+.p-size {
+    text-align: right;
+    flex-grow: 5;
+}
+.p-box--center {
+    padding: 2rem;
+    text-align: center;
+    border: 1px solid #30363d;
+    background-color: #0e1117;
+    margin: 2rem;
+    border-radius: 1rem;
 }

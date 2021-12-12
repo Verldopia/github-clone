@@ -10,8 +10,8 @@
             this.$weather = document.querySelector('.weather');
             this.$covidCases = document.querySelector('.covid-cases');
         },
-        generateHtmlForWeather (city = 'Ghent') {
-            fetch(`http://api.weatherapi.com/v1/current.json?key=b50b7fae602444dab76165810211112&q=$${city}`, {
+        async generateHtmlForWeather (city = 'Ghent') {
+            await fetch(`http://api.weatherapi.com/v1/current.json?key=b50b7fae602444dab76165810211112&q=$${city}`, {
                 method: 'GET'
             })
             .then(result => {
@@ -23,11 +23,11 @@
             .then(data => {
                 this.$weather.innerHTML = `
                 <p>${data.location.name}, ${data.location.country}: <span class="temp">${data.location.country.includes('United States of America') ? data.current.temp_f + "°F": data.current.temp_c + "°C"}</span></p>
-                <img src="${data.current.condition.icon}" alt="Presenting current weather"></img>`
+                <img src="https:${data.current.condition.icon}" alt="${data.current.condition.text}"></img>`
             })
         },
-        generateHtmlForCovidCases () {
-            fetch('https://data.stad.gent/api/records/1.0/search/?dataset=dataset-of-cumulative-number-of-confirmed-cases-by-municipality&q=.', {
+        async generateHtmlForCovidCases () {
+            await fetch('https://data.stad.gent/api/records/1.0/search/?dataset=dataset-of-cumulative-number-of-confirmed-cases-by-municipality&q=.', {
                 method: 'GET'
             })
             .then(result => {
