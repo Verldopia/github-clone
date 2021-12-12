@@ -2,17 +2,21 @@
     margin: 0;
 }
 h2 {
-    background-color: #58a6ff;
+    background-color: #417fc5;
     padding: 1rem 2rem;
     color: #010409;
     text-align: center;
 }
 body {
     background-color: #010409;
-    color: rgb(201, 209, 217);
+    color: #c9d1d9;
     font-family: sofia-pro, sans-serif;
     font-weight: 400;
     font-style: normal;
+    transition: all ease 0.2s;
+}
+label {
+    margin: 1.5rem;
 }
 
 /* Header */
@@ -32,10 +36,24 @@ header,
     flex-direction: row;
     flex-wrap: nowrap;
     align-items: center;
+    justify-content: flex-end;
+}
+.covid-cases {
+    position: absolute;
+    left: 20rem;
+}
+.covid-cases img {
+    max-width: 2rem;
 }
 .box-header,
 .weather p {
     gap: 2rem;
+}
+.weather p {
+    background-color: #c9d1d9;
+    color: #0e1117;
+    padding: 0.2rem 0 0.2rem 1.5rem;
+    border-radius: 0 1rem 1rem 0;
 }
 .box-header img {
     width: 2rem;
@@ -43,9 +61,38 @@ header,
 .weather img {
     width: 4rem;
 }
+.temp,
+.weather p {
+    padding: 0.2rem 2rem 0.2rem 0.4rem;
+    background-color: rgb(248, 248, 165);
+    color: #417fc5;
+    border-radius: 0 1rem 1rem 0;
+}
+#submit-city,
+#search-city {
+    font-family: sofia-pro, sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    background-color: #c9d1d9;
+    color: #010409;
+    border: none;
+    padding: 0.2rem 1.5rem;
+    border-radius: 1rem 0 0 1rem;
+    border-right: 1px solid #30363d;
+    transition: all ease 0.2s;
+}
+#search-city {
+    border-radius: 0;
+    margin-right: 0.3rem;
+}
+#search-city:hover {
+    cursor: pointer;
+    background-color: #afb4b9;
+}
 .box-logo {
     display: flex;
-    flex-grow: 10;
+    flex-grow: 1;
+    align-items: center;
 }
 .logo {
     height: 2.5rem;

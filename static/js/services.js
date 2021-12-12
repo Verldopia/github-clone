@@ -4,14 +4,14 @@
             this.cacheElements();
             this.generateHtmlForWeather();
             this.generateHtmlForCovidCases();
-            this.eventListener();
+            this.eventListeners();
         },
         cacheElements () {
             this.$weather = document.querySelector('.weather');
             this.$covidCases = document.querySelector('.covid-cases');
         },
-        generateHtmlForWeather () {
-            fetch('http://api.weatherapi.com/v1/current.json?key=b50b7fae602444dab76165810211112&q=$Ghent', {
+        generateHtmlForWeather (city = 'ghent') {
+            fetch(`http://api.weatherapi.com/v1/current.json?key=b50b7fae602444dab76165810211112&q=$${city}`, {
                 method: 'GET'
             })
             .then(result => {
@@ -21,10 +21,9 @@
                 return result.json()
             })
             .then(data => {
-                const weather = data.current;
                 this.$weather.innerHTML = `
-                <p>${weather.temp_c}°C</p>
-                <img src="${weather.condition.icon}" alt="Presenting current weather"></img>`
+                <p>${data.location.name}, ${data.location.country}: <span class="temp">${data.location.tz_id.includes("Europe")  ? data.current.temp_c + "°C": data.current.temp_f + "°F"}</span></p>
+                <img src="${data.current.condition.icon}" alt="Presenting current weather"></img>`
             })
         },
         generateHtmlForCovidCases () {
@@ -44,10 +43,14 @@
                 <img src="static/media/images/virus--white.png" alt="Presenting virus"></img>`
             });
         },
-        eventListener () {
-            const home = document.querySelector('.logo');
-            home.addEventListener('click', () => {
+        eventListeners () {
+            document.querySelector('.logo').addEventListener('click', () => {
                 document.location.href = 'index.html';
+            });
+            this.$btn = document.getElementById("search-city");
+            this.$btn.addEventListener('click', () => {
+                const city = document.getElementById("submit-city").value;
+                this.generateHtmlForWeather(city)
             });
         }
     };
