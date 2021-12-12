@@ -11,17 +11,21 @@ body {
     background-color: #010409;
     color: #c9d1d9;
     font-family: sofia-pro, sans-serif;
-    font-weight: 400;
-    font-style: normal;
+    font-size: 1.1rem;
     transition: all ease 0.2s;
 }
 label {
     margin: 1.5rem;
+    color: #f8f8a5;
+}
+::placeholder {
+    color: #010409;
 }
 
 /* Header */
 
 header {
+    height: 4rem;
     padding: 1rem 2rem;
     background-color: #161b22;
 }
@@ -41,6 +45,9 @@ header,
 .covid-cases {
     position: absolute;
     left: 20rem;
+    padding-right: 1rem;
+    background-color: #0e1117;
+    border-radius: 1rem;
 }
 .covid-cases img {
     max-width: 2rem;
@@ -63,16 +70,21 @@ header,
 }
 .temp,
 .weather p {
-    padding: 0.2rem 2rem 0.2rem 0.4rem;
-    background-color: rgb(248, 248, 165);
+    padding: 0.2rem 2rem 0.2rem 1.5rem;
+    background-color: #f8f8a5;
     color: #417fc5;
     border-radius: 0 1rem 1rem 0;
+}
+.temp {
+    padding-left: 0.3rem;
+}
+.user-light {
+    background-color: #161b22;
 }
 #submit-city,
 #search-city {
     font-family: sofia-pro, sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
+    font-size: 1.1rem;
     background-color: #c9d1d9;
     color: #010409;
     border: none;
@@ -104,6 +116,10 @@ header,
 .logo:hover {
     cursor: pointer;
 }
+.smaller {
+    color: #f8f8a5;
+    font-size: 0.9rem;
+}
 
 /* Main */
 
@@ -120,8 +136,7 @@ header,
     border-radius: 0 0 1rem 1rem;
 }
 .box-user {
-    padding: 2rem;
-    padding-bottom: 0;
+    padding: 1rem 2rem; 
     display: flex;
     gap: 1rem;
 }

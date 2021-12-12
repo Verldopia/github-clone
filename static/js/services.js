@@ -10,7 +10,7 @@
             this.$weather = document.querySelector('.weather');
             this.$covidCases = document.querySelector('.covid-cases');
         },
-        generateHtmlForWeather (city = 'ghent') {
+        generateHtmlForWeather (city = 'Ghent') {
             fetch(`http://api.weatherapi.com/v1/current.json?key=b50b7fae602444dab76165810211112&q=$${city}`, {
                 method: 'GET'
             })
