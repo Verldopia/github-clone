@@ -45,7 +45,6 @@
             }
         },
         async fetchGithubRepositories(username = "pgmgent") {
-            console.log(username)
             await fetch(`https://api.github.com/users/${username}/repos?page=1&per_page=25`, {
                     method: 'GET',
                     headers: {
@@ -69,7 +68,7 @@
                 return `
                 <div class="box-repos">
                     <div class="repos--titles">
-                        <h3 class="h3-repos">${rep.full_name}</h3>
+                        <a class="a-repos">${rep.full_name}</a>
                         <p>${rep.description === null ? 'No description available' : rep.description}</p>
                     </div>
                     <div class="repos--smaller-info">
@@ -141,7 +140,8 @@
                     </div>`
                 }).join('');
                 this.$githubUser.innerHTML = this.githubHTML;
-                this.generateListeners();
+                this.generateListeners(data);
+                this.generateListenersPGM(data);
             }
         },
         generateListeners() {
@@ -182,13 +182,21 @@
             this.userPGM = users.map ((u) => {
                 if (u.portfolio.githubUserName === dataset) {
                 return `
-                <div class="box-PGM">
-                    <h2>${u.first} ${u.last}</h2>
-                    <p>${u.date}</p>
-                    <p>${u.email}</p>
-                    <blockquote>${u.quote}</blockquote>
-                    <p>${u.teacher}</p>
-                    <img src="${u.thumbnail}" alt="${dataset}"></img>
+                <div class="container-pgm ${u.portfolio.githubUserName === dataset ? 'is-selected' : ''}">
+                    <img src="${u.large}" alt="${dataset}"></img>
+                    <div class="box-pgm">
+                        <h2>${u.first} ${u.last}</h2>
+                        <blockquote>${u.quote}</blockquote>
+                        <div class="box-pgm--text">
+                            <p>Born ${new Date(u.date).toLocaleDateString()}</p>
+                            <p>${u.email}</p>
+                            <div class="box-socials">
+                                <a href="http://github.com/${u.portfolio.githubUserName}" target="_blank">GitHub</a>
+                                <a href="http://linkedin.com/${u.portfolio.linkedInUserName}" target="_blank">LinkedIn</a>
+                            </div>
+                            <p class="teacher">${u.teacher === true ? 'Teacher' : 'Student'}</p>
+                        </div>
+                    </div>
                 </div>`
             }}).join('')
             this.$profilePGM.innerHTML = this.userPGM;

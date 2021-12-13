@@ -4,10 +4,11 @@
         "last": "Aubert",
         "email": "lena.aubert@example.com",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/women/44.jpg",
+        "large": "https://randomuser.me/api/portraits/women/44.jpg",
         "quote": "Shrek is love, Shrek is life",
         "portfolio": {
-            "githubUserName": "crazypeacock150",
-            "linkedInUserName": "crazypeacock150"
+            "githubUserName": "lena",
+            "linkedInUserName": "lena"
         },
         "date": "1970-01-18T05:44:50.587Z",
         "teacher": true
@@ -17,10 +18,11 @@
         "last": "Gonçalves",
         "email": "gladis.goncalves@example.com",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/women/75.jpg",
+        "large": "https://randomuser.me/api/portraits/women/75.jpg",
         "quote": "Life is soup, i am fork",
         "portfolio": {
-            "githubUserName": "organicwolf534",
-            "linkedInUserName": "organicwolf534"
+            "githubUserName": "dindagladies",
+            "linkedInUserName": "dindagladies"
         },
         "date": "1990-08-27T20:28:40.712Z",
         "teacher": false
@@ -30,10 +32,11 @@
         "last": "Hegstad",
         "email": "alvar.hegstad@example.com",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/men/21.jpg",
+        "large": "https://randomuser.me/api/portraits/men/21.jpg",
         "quote": "If i swallow a magnet, will i become attractive?",
         "portfolio": {
-            "githubUserName": "orangedog262",
-            "linkedInUserName": "orangedog262"
+            "githubUserName": "dennishegstad",
+            "linkedInUserName": "dennishegstad"
         },
         "date": "1987-09-21T21:20:10.113Z",
         "teacher": false
@@ -43,10 +46,11 @@
         "last": "Hernandez",
         "email": "pilar.hernandez@example.com",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/women/32.jpg",
+        "large": "https://randomuser.me/api/portraits/women/32.jpg",
         "quote": "I love feet",
         "portfolio": {
-            "githubUserName": "lazysnake423",
-            "linkedInUserName": "lazysnake423"
+            "githubUserName": "creeperyang",
+            "linkedInUserName": "creeperyang"
         },
         "date": "1961-06-06T01:16:56.315Z",
         "teacher": true
@@ -56,10 +60,11 @@
         "last": "Friis",
         "email": "nelly.friis@example.com",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/women/59.jpg",
+        "large": "https://randomuser.me/api/portraits/women/59.jpg",
         "quote": "Pilar Hernandez is a weirdo",
         "portfolio": {
-            "githubUserName": "tinylion764",
-            "linkedInUserName": "tinylion764"
+            "githubUserName": "tinylion",
+            "linkedInUserName": "tinylion"
         },
         "date": "1948-06-28T19:35:06.687Z",
         "teacher": true
@@ -69,10 +74,11 @@
         "last": "Young",
         "email": "brittany.young@example.com",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/women/93.jpg",
+        "large": "https://randomuser.me/api/portraits/women/93.jpg",
         "quote": "My secret talent is getting tired without doing anything",
         "portfolio": {
-            "githubUserName": "sadcat640",
-            "linkedInUserName": "sadcat640"
+            "githubUserName": "sadcat",
+            "linkedInUserName": "sadcat"
         },
         "date": "1960-01-16T01:20:01.465Z",
         "teacher": false
@@ -82,10 +88,11 @@
         "last": "Laakso",
         "email": "mikael.laakso@example.com",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/men/61.jpg",
+        "large": "https://randomuser.me/api/portraits/men/61.jpg",
         "quote": "Epstein did'nt kill himself",
         "portfolio": {
-            "githubUserName": "smallmouse975",
-            "linkedInUserName": "smallmouse975"
+            "githubUserName": "smallmouse",
+            "linkedInUserName": "smallmouse"
         },
         "date": "1946-01-01T21:25:24.759Z",
         "teacher": false
@@ -95,10 +102,11 @@
         "last": "Silva",
         "email": "alexandra.silva@example.com",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/women/9.jpg",
+        "large": "https://randomuser.me/api/portraits/women/9.jpg",
         "quote": "I live for two reasons. 1: I was born, 2: I haven't died yet.",
         "portfolio": {
-            "githubUserName": "lazytiger448",
-            "linkedInUserName": "lazytiger448"
+            "githubUserName": "lazytiger",
+            "linkedInUserName": "lazytiger"
         },
         "date": "1984-11-02T19:41:00.945Z",
         "teacher": false
@@ -108,10 +116,11 @@
         "last": "gibson",
         "email": "brad.gibson@example.com",
         "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg",
+        "large": "https://randomuser.me/api/portraits/men/75.jpg",
         "quote": "Every 60 seconds in Africa, a minute passes.",
         "portfolio": {
-            "githubUserName": "silverswan131",
-            "linkedInUserName": "silverswan131"
+            "githubUserName": "silvers",
+            "linkedInUserName": "silvers"
         },
         "date": "1993-07-20T09:44:18.674Z",
         "teacher": true
