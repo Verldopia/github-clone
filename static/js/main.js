@@ -1,5 +1,6 @@
 (() => {
     const app = {
+        gitHubUser: null,
         init () {
             this.cacheElements();
             this.generateUI();
@@ -44,7 +45,7 @@
             }
         },
         async fetchGithubRepositories (username = "pgmgent") {
-            await fetch(`https://api.github.com/users/${username}/repos?page=1&per_page=50`, {
+            await fetch(`https://api.github.com/users/${username}/repos?page=1&per_page=25`, {
                 method: 'GET'
             })
             .then(result => {
@@ -79,14 +80,6 @@
             }).join('');
             this.$h3Repos.innerHTML = `${amountResults} repository results for ${username}.`;
             this.$githubRepos.innerHTML = reposHTML;
-
-
-            
-
-
-
-
-
         },
         async fetchGithubFollowers (username) {
             console.log('current user: ' + username)
@@ -112,15 +105,16 @@
             } else {
                const followersHTML = followers.map((fol) => {
                 return `
-                <div class="box-follower">
+                <div class="box-follower" data-follower="${fol.login}">
                     <img src="${fol.avatar_url}">
-                    <p>${fol.login}</p>
+                    <p class="follower-login">${fol.login}</p>
                 </div>`
             }).join('');
             this.$githubFollowers.innerHTML = `<div class="container-followers">${followersHTML}</div>`; 
+            this.generateListeners();
             }
         },
-        async fetchGithubUsers (username = "pgm-michielwillems") {
+        async fetchGithubUsers (username = "santa") {
             await fetch(`https://api.github.com/search/users?sort=desc&page=1&per_page=100&q=${username}`, {
                 method: 'GET'
             })
@@ -135,40 +129,44 @@
             })
         },
         generateGithubUsers (data) {
-            
             for (let i = 1; i < 2; i++) {
                 this.githubHTML = data.map((user) => {
-                    this.$githubUser.addEventListener('click', 
-                        this.generateListenerGithub
-                    )
                     return `
-                    <div class="box-user box-github ${i++ % 2 !== 0 ? '' : 'user-light'}" data-user="${user.id}">
+                    <div class="box-user box-github ${i++ % 2 !== 0 ? '' : 'user-light'}" data-user="${user.login}">
                         <img class="is-img" src="${user.avatar_url}">
                         <p>${user.login}</p>
                     </div>`
-                }).join('')
-                this.$githubUser.innerHTML = this.githubHTML;
+                }).join('');
+                this.$githubUser.innerHTML = this.githubHTML;            
+                this.generateListeners(data);
             }
-        },
-        generateListenerGithub (data) {
-            this.$uniqueUser = document.querySelectorAll('.box-user box-github');
-                // console.log(this.$uniqueUser.dataset.user)
         },
         generateListeners () {
             this.$btn = document.getElementById("search-user");
+            this.$btn;
             this.$btn.addEventListener('click', () => {
-            const userName = document.getElementById("submit-user").value;
-            this.fetchGithubUsers(userName)
+                const userName = document.getElementById("submit-user").value;
+                this.fetchGithubUsers(userName)
             });
-        },
-        // generateInfoForUser ($user) {
-        //     console.log(user)
-        //     const uniqueUser = user.map((use) => use.login.uuid)
-        //     for (const dataset of uniqueUser) {
-        //     if ($user.dataset.user === dataset) {
-        //         console.log(dataset)
-        //     }
-        // }}
+            this.$uniqueUser = document.querySelectorAll(".box-user");
+            this.$btn;
+            for (const $filter of this.$uniqueUser) {
+                $filter.addEventListener('click', () => {
+                    const category = $filter.dataset.user;
+                    this.gitHubUser = category;
+                    console.log(this.gitHubUser)
+                    this.fetchGithubRepositories(this.gitHubUser);
+            })};
+            this.$uniqueFollower = document.querySelectorAll(".box-follower");
+            for (const $filter of this.$uniqueFollower) {
+                $filter.addEventListener('click', () => {
+                    const category = $filter.dataset.follower;
+                    this.fetchGithubRepositories(category)
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                })
+            }
+        }
     };
     app.init()
 })();
