@@ -45,12 +45,14 @@
             }
         },
         async fetchGithubRepositories(username = "pgmgent") {
-            console.log('fetching github ' + username)
+            console.log(username)
             await fetch(`https://api.github.com/users/${username}/repos?page=1&per_page=25`, {
-                    method: 'GET'
+                    method: 'GET',
+                    headers: {
+                        'Authorization': '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'
+                    }
                 })
                 .then(result => {
-                    console.log(result)
                     if (!result.ok) {
                         throw Error('ERROR! this API is not found!');
                     }
@@ -64,7 +66,6 @@
         generateHtmlForRepositories(data, username) {
             const amountResults = data.length;
             const reposHTML = data.map((rep) => {
-
                 return `
                 <div class="box-repos">
                     <div class="repos--titles">
@@ -166,29 +167,31 @@
                 })
             };
         },
-        generateListenersPGM(user) {
+        generateListenersPGM(users) {
             this.$uniquePGM = document.querySelectorAll(".box-user");
             for (const $filter of this.$uniquePGM) {
                 $filter.addEventListener('click', () => {
                     const category = $filter.dataset.user;
-                    this.generateProfilePGM (user, category)
+                    this.generateProfilePGM (users, category);
                     this.fetchGithubRepositories(category);
                 })
             };
         },
-        generateProfilePGM (allUsers, user) {
-            this.$profilePGM = document.querySelectorAll(".box-user");
-            for (const u of allUsers) {
-                if (u.portfolio.githubUserName === user) {
-                    this.$profilePGM.innerHTML = `
+        generateProfilePGM (users, dataset) {
+            this.$profilePGM = document.querySelector(".box-profile");
+            this.userPGM = users.map ((u) => {
+                if (u.portfolio.githubUserName === dataset) {
+                return `
+                <div class="box-PGM">
                     <h2>${u.first} ${u.last}</h2>
                     <p>${u.date}</p>
                     <p>${u.email}</p>
                     <blockquote>${u.quote}</blockquote>
                     <p>${u.teacher}</p>
-                    <img src="${u.thumbnail}" alt="${user}"></img>`
-                }
-            }
+                    <img src="${u.thumbnail}" alt="${dataset}"></img>
+                </div>`
+            }}).join('')
+            this.$profilePGM.innerHTML = this.userPGM;
         }
     };
     app.init()
