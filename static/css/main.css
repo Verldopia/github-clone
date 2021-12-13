@@ -279,3 +279,10 @@ main {
     opacity: 75%;
     transform: scale(105%);
 }
+.box-profile {
+    margin: 1rem 2rem 0;
+    width: calc(100% - 4rem);
+    height: 10rem;
+    border: 1px solid #30363d;
+    border-radius: 1rem 1rem 1rem 0;
+}
