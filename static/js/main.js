@@ -108,7 +108,7 @@
                 const followersHTML = followers.map((fol) => {
                     return `
                 <div class="box-follower" data-follower="${fol.login}">
-                    <img src="${fol.avatar_url}">
+                    <img src="${fol.avatar_url}" loading="lazy">
                     <p class="follower-login">${fol.login}</p>
                 </div>`
                 }).join('');
@@ -173,8 +173,6 @@
                     const category = $filter.dataset.follower;
                     this.fetchGithubRepositories(category);
                     this.generateProfileGH(users, category);
-                    document.body.scrollTop = 0;
-                    document.documentElement.scrollTop = 0;
                 })
             };
         },
