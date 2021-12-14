@@ -244,6 +244,10 @@ main {
     color: #417fc5;
     font-size: 1.2rem;
 }
+.a-repos:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
 .p-size {
     text-align: right;
     flex-grow: 5;

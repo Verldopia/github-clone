@@ -113,7 +113,7 @@
                 </div>`
                 }).join('');
                 this.$githubFollowers.innerHTML = `<div class="container-followers">${followersHTML}</div>`;
-                this.generateListeners();
+                this.generateListenersPGM(followers);
             }
         },
         async fetchGithubUsers(username = "pgm-michielwillems") {
@@ -127,7 +127,7 @@
                     return result.json()
                 })
                 .then(data => {
-                    this.generateGithubUsers(data.items)
+                    this.generateGithubUsers(data.items);
                 })
         },
         generateGithubUsers(data) {
@@ -141,10 +141,9 @@
                 }).join('');
                 this.$githubUser.innerHTML = this.githubHTML;
                 this.generateListeners(data);
-                this.generateListenersPGM(data);
             }
         },
-        generateListeners() {
+        generateListeners(data) {
             this.$btn = document.getElementById("search-user");
             this.$btn.addEventListener('click', () => {
                 const userName = document.getElementById("submit-user").value;
@@ -155,15 +154,7 @@
                 $filter.addEventListener('click', () => {
                     const category = $filter.dataset.user;
                     this.fetchGithubRepositories(category);
-                })
-            };
-            this.$uniqueFollower = document.querySelectorAll(".box-follower");
-            for (const $filter of this.$uniqueFollower) {
-                $filter.addEventListener('click', () => {
-                    const category = $filter.dataset.follower;
-                    this.fetchGithubRepositories(category)
-                    document.body.scrollTop = 0;
-                    document.documentElement.scrollTop = 0;
+                    this.generateProfileGH(data, category);
                 })
             };
         },
@@ -176,10 +167,21 @@
                     this.fetchGithubRepositories(category);
                 })
             };
+            this.$uniqueFollower = document.querySelectorAll(".box-follower");
+            for (const $filter of this.$uniqueFollower) {
+                $filter.addEventListener('click', () => {
+                    const category = $filter.dataset.follower;
+                    this.fetchGithubRepositories(category);
+                    this.generateProfileGH(users, category);
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                })
+            };
         },
         generateProfilePGM (users, dataset) {
             this.$profilePGM = document.querySelector(".box-profile");
             this.userPGM = users.map ((u) => {
+                console.log(u.portfolio.githubUserName)
                 if (u.portfolio.githubUserName === dataset) {
                 return `
                 <div class="container-pgm ${u.portfolio.githubUserName === dataset ? 'is-selected' : ''}">
@@ -195,6 +197,27 @@
                                 <a href="http://linkedin.com/${u.portfolio.linkedInUserName}" target="_blank">LinkedIn</a>
                             </div>
                             <p class="teacher">${u.teacher === true ? 'Teacher' : 'Student'}</p>
+                        </div>
+                    </div>
+                </div>`
+            }}).join('')
+            this.$profilePGM.innerHTML = this.userPGM;
+        },
+        generateProfileGH (users, dataset) {
+            this.$profilePGM = document.querySelector(".box-profile");
+            this.userPGM = users.map ((u) => {
+                if (u.login === dataset) {
+                return `
+                <div class="container-pgm">
+                    <img src="${u.avatar_url}" alt="${u.login}"></img>
+                    <div class="box-pgm">
+                        <h2>${u.login}</h2>
+                        <div class="box-pgm--text">
+                            <p>ID: ${u.id}</p>
+                            <div class="box-socials">
+                                <a href="${u.html_url}" target="_blank">GitHub</a>
+                                <a href="http://linkedin.com/${u.login}" target="_blank">LinkedIn</a>
+                            </div>
                         </div>
                     </div>
                 </div>`
