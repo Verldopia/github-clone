@@ -181,7 +181,6 @@
         generateProfilePGM (users, dataset) {
             this.$profilePGM = document.querySelector(".box-profile");
             this.userPGM = users.map ((u) => {
-                console.log(u.portfolio.githubUserName)
                 if (u.portfolio.githubUserName === dataset) {
                 return `
                 <div class="container-pgm ${u.portfolio.githubUserName === dataset ? 'is-selected' : ''}">
