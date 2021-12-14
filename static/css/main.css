@@ -188,13 +188,25 @@ main {
 }
 .box-search--users {
     display: flex;
+    justify-content: flex-start;
     justify-content: center;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     padding-bottom: 1rem;
+    flex-grow: 1;
 }
 .box-search--users input,
 .box-search--users button {
     max-width: 8rem;
+}
+#search-video {
+    margin: 0.5rem;
+    background-color: #161b22;
+    border: none;
+    color: #417fc5;
+    text-decoration: underline;
+}
+#search-video:hover {
+    color: #f8f8a5;
 }
 .box-github--users label {
     display: block;
@@ -286,6 +298,7 @@ main {
     cursor: pointer;
     opacity: 75%;
     transform: scale(105%);
+    overflow: hidden;
 }
 .container-pgm {
     position: relative;

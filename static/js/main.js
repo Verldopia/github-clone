@@ -1,6 +1,5 @@
 (() => {
     const app = {
-        // gitHubUser: null,
         init() {
             this.cacheElements();
             this.generateUI();
@@ -11,11 +10,13 @@
             this.$githubFollowers = document.querySelector('.github--followers');
             this.$h3Repos = document.querySelector('.h3-main');
             this.$githubUser = document.querySelector('.users-github');
+            this.$profile = document.querySelector(".box-profile");
         },
         generateUI() {
             this.fetchHtmlForUsers();
             this.fetchGithubRepositories();
             this.fetchGithubUsers();
+            this.fetchYoutubeVideos();
         },
         async fetchHtmlForUsers() {
             await fetch("static/data/pgm.json")
@@ -118,36 +119,42 @@
         },
         async fetchGithubUsers(username = "pgm-michielwillems") {
             await fetch(`https://api.github.com/search/users?sort=desc&page=1&per_page=100&q=${username}`, {
-                    method: 'GET'
-                })
-                .then(result => {
-                    if (!result.ok) {
-                        throw Error('ERROR! this API is not found!');
-                    }
-                    return result.json()
-                })
-                .then(data => {
-                    this.generateGithubUsers(data.items);
-                })
+                method: 'GET'
+            })
+            .then(result => {
+                if (!result.ok) {
+                    throw Error('ERROR! this API is not found!');
+                }
+                return result.json()
+            })
+            .then(data => {
+                this.generateGithubUsers(data.items);
+            })
         },
         generateGithubUsers(data) {
             for (let i = 1; i < 2; i++) {
-                this.githubHTML = data.map((user) => {
-                    return `
-                    <div class="box-user box-github ${i++ % 2 !== 0 ? '' : 'user-light'}" data-user="${user.login}">
-                        <img class="is-img" src="${user.avatar_url}">
-                        <p>${user.login}</p>
-                    </div>`
-                }).join('');
-                this.$githubUser.innerHTML = this.githubHTML;
-                this.generateListeners(data);
+            this.githubHTML = data.map((user) => {
+                return `
+                <div class="box-user box-github ${i++ % 2 !== 0 ? '' : 'user-light'}" data-user="${user.login}">
+                    <img class="is-img" src="${user.avatar_url}">
+                    <p>${user.login}</p>
+                </div>`
+            }).join('');
+            this.$githubUser.innerHTML = this.githubHTML;
+            this.generateListeners(data);
             }
         },
         generateListeners(data) {
-            this.$btn = document.getElementById("search-user");
-            this.$btn.addEventListener('click', () => {
-                const userName = document.getElementById("submit-user").value;
-                this.fetchGithubUsers(userName)
+            this.$btnUser = document.getElementById("search-user");
+            this.$btnUser.addEventListener('click', () => {
+                console.log(this.$btnUser)
+                this.userName = document.getElementById("submit-user").value;
+                this.fetchGithubUsers(this.userName);
+            });
+            this.$btnVideos = document.getElementById("search-video");
+                this.$btnVideos.addEventListener('click', () => {
+                // this.userName = document.getElementById("submit-user").value;
+                this.fetchYoutubeVideos(this.userName);
             });
             this.$uniqueUser = document.querySelectorAll(".box-github");
             for (const $filter of this.$uniqueUser) {
@@ -163,7 +170,7 @@
             for (const $filter of this.$uniquePGM) {
                 $filter.addEventListener('click', () => {
                     const category = $filter.dataset.user;
-                    this.generateProfilePGM (users, category);
+                    this.generateProfilePGM(users, category);
                     this.fetchGithubRepositories(category);
                 })
             };
@@ -176,16 +183,15 @@
                 })
             };
         },
-        generateProfilePGM (users, dataset) {
-            this.$profilePGM = document.querySelector(".box-profile");
-            this.userPGM = users.map ((u) => {
-                if (u.portfolio.githubUserName === dataset) {
+        generateProfilePGM(users, dataset) {
+            this.userPGM = users.map((u) => {
+            if (u.portfolio.githubUserName === dataset) {
                 return `
                 <div class="container-pgm ${u.portfolio.githubUserName === dataset ? 'is-selected' : ''}">
                     <img src="${u.large}" alt="${dataset}"></img>
                     <div class="box-pgm">
                         <h2>${u.first} ${u.last}</h2>
-                        <blockquote>${u.quote}</blockquote>
+                        <blockquote>"${u.quote}"</blockquote>
                         <div class="box-pgm--text">
                             <p>Born ${new Date(u.date).toLocaleDateString()}</p>
                             <p>${u.email}</p>
@@ -198,28 +204,50 @@
                     </div>
                 </div>`
             }}).join('')
-            this.$profilePGM.innerHTML = this.userPGM;
+            this.$profile.innerHTML = this.userPGM;
         },
-        generateProfileGH (users, dataset) {
-            this.$profilePGM = document.querySelector(".box-profile");
-            this.userPGM = users.map ((u) => {
-                if (u.login === dataset) {
+        generateProfileGH(users, dataset) {
+            this.userGH = users.map((u) => {
+            if (u.login === dataset) {
                 return `
                 <div class="container-pgm">
                     <img src="${u.avatar_url}" alt="${u.login}"></img>
-                    <div class="box-pgm">
-                        <h2>${u.login}</h2>
-                        <div class="box-pgm--text">
-                            <p>ID: ${u.id}</p>
-                            <div class="box-socials">
-                                <a href="${u.html_url}" target="_blank">GitHub</a>
-                                <a href="https://linkedin.com/${u.login}" target="_blank">LinkedIn</a>
-                            </div>
+                <div class="box-pgm">
+                    <h2>${u.login}</h2>
+                    <div class="box-pgm--text">
+                        <p>ID: ${u.id}</p>
+                        <div class="box-socials">
+                            <a href="${u.html_url}" target="_blank">GitHub</a>
+                            <a href="https://linkedin.com/${u.login}" target="_blank">LinkedIn</a>
                         </div>
                     </div>
-                </div>`
+                </div>
+            </div>`
             }}).join('')
-            this.$profilePGM.innerHTML = this.userPGM;
+            this.$profile.innerHTML = this.userGH;
+        },
+        // Fetch Youtube Videos
+        async fetchYoutubeVideos(searchField = "cat") {
+            const key = "AIzaSyDIrCsu25cYlgw4qRhLhpMh9gLSrXKzdlk";
+            await fetch(`https://www.googleapis.com/youtube/v3/search?key=${key}&part=snippet&maxResults=20&q=${searchField}`, {
+                    method: 'GET',
+                })
+                .then(result => {
+                    if (!result.ok) {
+                        throw Error('ERROR! this API is not found!');
+                    }
+                    return result.json()
+                })
+                .then(data => {
+                    this.generateInterfaceForVideos(data.items);
+                })
+        },
+        generateInterfaceForVideos (allVideos) {
+            this.$main = document.querySelector('.box-github--main')
+            console.log(allVideos)
+            if (allVideos.length === 0) {
+                this.$main.innerHTML = `<h3>No videos! That's what happens when you input a weird search... Rethink your life choices and come again</h3>`
+            }
         }
     };
     app.init()
