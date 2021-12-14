@@ -10,13 +10,18 @@
             this.$githubFollowers = document.querySelector('.github--followers');
             this.$h3Repos = document.querySelector('.h3-main');
             this.$githubUser = document.querySelector('.users-github');
-            this.$profile = document.querySelector(".box-profile");
+            this.$profile = document.querySelector('.box-profile');
+            this.$toggle = document.querySelector('.switch');
+            this.$boxGH = document.querySelector('.box-github--users');
+            this.$boxPGM = document.querySelector('.box-users');
+            this.$switch = document.querySelector('.switch__circle');
         },
         generateUI() {
             this.fetchHtmlForUsers();
             this.fetchGithubRepositories();
             this.fetchGithubUsers();
-            this.fetchYoutubeVideos();
+            this.colorTheme();
+            // this.fetchYoutubeVideos();
         },
         async fetchHtmlForUsers() {
             await fetch("static/data/pgm.json")
@@ -32,13 +37,13 @@
             for (let i = 1; i < 2; i++) {
                 const userHTML = user.map((use) => {
                     return `
-                <div class="box-user ${i++ % 2 === 0 ? '' : 'user-light'}" data-user="${use.portfolio.githubUserName}">
+                <a class="box-user ${i++ % 2 === 0 ? '' : 'user-light'}" data-user="${use.portfolio.githubUserName}">
                     <img class="is-img" src="${use.thumbnail}">
                     <div class="box-text">
                         <p>${use.first} ${use.last}</p>
                         <p class="smaller">${use.portfolio.githubUserName}</p>
                     </div>
-                </div>`
+                </a>`
 
                 }).join('')
                 this.$users.innerHTML = `<div class="box-user--all">${userHTML}</div>`;
@@ -135,10 +140,10 @@
             for (let i = 1; i < 2; i++) {
             this.githubHTML = data.map((user) => {
                 return `
-                <div class="box-user box-github ${i++ % 2 !== 0 ? '' : 'user-light'}" data-user="${user.login}">
+                <a class="box-user box-github ${i++ % 2 !== 0 ? '' : 'user-light'}" data-user="${user.login}">
                     <img class="is-img" src="${user.avatar_url}">
                     <p>${user.login}</p>
-                </div>`
+                </a>`
             }).join('');
             this.$githubUser.innerHTML = this.githubHTML;
             this.generateListeners(data);
@@ -154,7 +159,7 @@
             this.$btnVideos = document.getElementById("search-video");
                 this.$btnVideos.addEventListener('click', () => {
                 // this.userName = document.getElementById("submit-user").value;
-                this.fetchYoutubeVideos(this.userName);
+                // this.fetchYoutubeVideos(this.userName);
             });
             this.$uniqueUser = document.querySelectorAll(".box-github");
             for (const $filter of this.$uniqueUser) {
@@ -164,6 +169,8 @@
                     this.generateProfileGH(data, category);
                 })
             };
+                
+            
         },
         generateListenersPGM(users) {
             this.$uniquePGM = document.querySelectorAll(".box-user");
@@ -227,27 +234,48 @@
             this.$profile.innerHTML = this.userGH;
         },
         // Fetch Youtube Videos
-        async fetchYoutubeVideos(searchField = "cat") {
-            const key = "AIzaSyDIrCsu25cYlgw4qRhLhpMh9gLSrXKzdlk";
-            await fetch(`https://www.googleapis.com/youtube/v3/search?key=${key}&part=snippet&maxResults=20&q=${searchField}`, {
-                    method: 'GET',
-                })
-                .then(result => {
-                    if (!result.ok) {
-                        throw Error('ERROR! this API is not found!');
-                    }
-                    return result.json()
-                })
-                .then(data => {
-                    this.generateInterfaceForVideos(data.items);
-                })
-        },
-        generateInterfaceForVideos (allVideos) {
-            this.$main = document.querySelector('.box-github--main')
-            console.log(allVideos)
-            if (allVideos.length === 0) {
-                this.$main.innerHTML = `<h3>No videos! That's what happens when you input a weird search... Rethink your life choices and come again</h3>`
-            }
+        // async fetchYoutubeVideos(searchField = "cat") {
+        // //     const key = "AIzaSyDIrCsu25cYlgw4qRhLhpMh9gLSrXKzdlk";
+        // //     await fetch(`https://www.googleapis.com/youtube/v3/search?key=${key}&part=snippet&maxResults=20&q=${searchField}`, {
+        // //             method: 'GET',
+        // //         })
+        // //         .then(result => {
+        // //             if (!result.ok) {
+        // //                 throw Error('ERROR! this API is not found!');
+        // //             }
+        // //             return result.json()
+        // //         })
+        // //         .then(data => {
+        // //             this.generateInterfaceForVideos(data.items);
+        // //         })
+        // // },
+        // // generateInterfaceForVideos (allVideos) {
+        // //     this.$main = document.querySelector('.box-github--main')
+        // //     console.log(allVideos)
+        // //     if (allVideos.length === 0) {
+        // //         this.$main.innerHTML = `<h3>No videos! That's what happens when you input a weird search... Rethink your life choices and come again</h3>`
+        // //     }
+        // }
+        colorTheme() {
+            this.$toggle.addEventListener('click', () => {
+                if (this.$toggle) {
+                    document.body.style.backgroundColor ="#FFFFFF";
+                    document.body.style.color ="#010409";
+                    this.$githubUser.style.backgroundColor = "#FFFFFF";
+                    this.$boxGH.style.backgroundColor = "#FFFFFF";
+                    this.$boxPGM.style.backgroundColor = "#FFFFFF";
+                    this.$switch.style.marginLeft= "calc(3.3rem - 0.15rem)";
+                    this.$toggle = false;
+                } else {
+                    document.body.style.backgroundColor ="";
+                    document.body.style.color ="";
+                    this.$githubUser.style.backgroundColor = "";
+                    this.$boxGH.style.backgroundColor = "";
+                    this.$boxPGM.style.backgroundColor = "";
+                    this.$switch.style.marginLeft ="";
+                    this.$toggle = true;
+                }
+            })
         }
     };
     app.init()

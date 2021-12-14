@@ -2,6 +2,14 @@
     margin: 0;
     scroll-behavior: smooth;
 }
+body {
+    background-color: #010409;
+    color: #c9d1d9;
+    font-family: sofia-pro, sans-serif;
+    font-size: 1.1rem;
+    transition: all ease 0.2s;
+    overflow-x: hidden;
+}
 h2 {
     background-color: #417fc5;
     padding: 1rem 2rem;
@@ -15,14 +23,6 @@ h2 {
 h3 {
     color: #4f93e0;
     font-size: 1.3rem;
-}
-body {
-    background-color: #010409;
-    color: #c9d1d9;
-    font-family: sofia-pro, sans-serif;
-    font-size: 1.1rem;
-    transition: all ease 0.2s;
-    overflow-x: hidden;
 }
 label {
     margin: 1.5rem;
@@ -49,6 +49,7 @@ label {
 /* Header */
 
 header {
+    color: #c9d1d9;
     height: 4rem;
     padding: 1rem 3rem 1rem 2rem;
     background-color: #161b22;
@@ -69,10 +70,13 @@ header,
 }
 .covid-cases {
     position: absolute;
-    left: 14rem;
+    left: 13rem;
+    width: 8rem;
+    height: 3rem;
     padding-right: 1rem;
     background-color: #0e1117;
-    border-radius: 1rem;
+    border: 1px solid #636d79;
+    border-radius: 2rem;
 }
 .covid-cases img {
     max-width: 2rem;
@@ -104,7 +108,8 @@ header,
     padding-left: 0.3rem;
 }
 .user-light {
-    background-color: #161b22;
+    color: #c9d1d9;
+    background-color: #161b22; 
 }
 button,
 input {
@@ -142,7 +147,6 @@ button:hover {
     cursor: pointer;
 }
 .smaller {
-    color: #f8f8a5;
     font-size: 0.9rem;
 }
 
@@ -181,6 +185,7 @@ main {
 }
 .box-user:hover {
     text-decoration: underline;
+    color: #417fc5;
 }
 .box-text {
     display: flex;
@@ -265,6 +270,7 @@ main {
     flex-grow: 5;
 }
 .p-box--center {
+    color: #c9d1d9;
     padding: 2rem;
     text-align: center;
     border: 1px solid #30363d;
@@ -282,17 +288,22 @@ main {
 .box-follower {
     transition: all ease 0.2s;
     position: relative;
+    width: 20%;
+    max-width: 30%;
+    flex-grow: 2;
 }
 .box-follower img {
-    width: 10rem;
+    width: 100%;
 }
 .box-follower p {
     position: absolute;
+    color: #c9d1d9;
     background-color: rgba(47, 53, 60, 0.80);
     left: 0rem;
     bottom: 0rem;
     padding: 0.5rem;
-    width: 9rem;
+    width: calc(100% - 1rem);
+    overflow: hidden;
 }
 .box-follower:hover {
     cursor: pointer;
@@ -323,7 +334,9 @@ main {
 }
 .box-pgm blockquote {
     font-size: 1.3rem;
-    color: #f8f8a5;
+}
+.box-pgm h2 {
+    overflow: hidden;
 }
 .box-pgm--text {
     display: flex;
@@ -350,7 +363,7 @@ main {
 }
 .box-socials a {
     transition: all ease 0.2s;
-    color: #c9d1d9;
+    color: #010409;
 }
 .box-socials a:hover {
     color: #417fc5;
@@ -359,7 +372,7 @@ main {
     position: fixed;
     padding: 0.5rem;
     color: #010409;
-    background-color: #f8f8a5;
+    background-color: #417fc5;
     border: none;
     bottom: calc(3rem + 2px);
     right: 21.25rem;
@@ -371,3 +384,43 @@ main {
     color: #c9d1d9;
     cursor: pointer;
 }
+.switch {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background-color: #0e1117;
+    width: 8rem;
+    height: 3rem;
+    border-radius: 2rem;
+    margin-left: 20.5rem;
+    border: 1px solid #636d79;
+}
+.switch__circle {
+    transition: all ease 0.4s;
+    margin: 0.15rem;
+    max-width: 4.7rem;
+    width: 100%;
+    height: 2.7rem;
+    border-radius: 2rem;
+    background-color: #417fc5;
+    z-index: 5;
+}
+.sun,
+.moon {
+    position: absolute;
+    background-image: url(../media/images/sun.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 2rem;
+    height: 2rem;
+}
+.sun {
+    left: 0.5rem;
+}
+.moon {
+    right: 0.5rem;
+    background-image: url(../media/images/moon.png);
+}
+
