@@ -193,8 +193,8 @@
                             <p>Born ${new Date(u.date).toLocaleDateString()}</p>
                             <p>${u.email}</p>
                             <div class="box-socials">
-                                <a href="http://github.com/${u.portfolio.githubUserName}" target="_blank">GitHub</a>
-                                <a href="http://linkedin.com/${u.portfolio.linkedInUserName}" target="_blank">LinkedIn</a>
+                                <a href="https://github.com/${u.portfolio.githubUserName}" target="_blank">GitHub</a>
+                                <a href="https://linkedin.com/${u.portfolio.linkedInUserName}" target="_blank">LinkedIn</a>
                             </div>
                             <p class="teacher">${u.teacher === true ? 'Teacher' : 'Student'}</p>
                         </div>
@@ -216,7 +216,7 @@
                             <p>ID: ${u.id}</p>
                             <div class="box-socials">
                                 <a href="${u.html_url}" target="_blank">GitHub</a>
-                                <a href="http://linkedin.com/${u.login}" target="_blank">LinkedIn</a>
+                                <a href="https://linkedin.com/${u.login}" target="_blank">LinkedIn</a>
                             </div>
                         </div>
                     </div>

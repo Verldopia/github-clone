@@ -11,7 +11,7 @@
             this.$covidCases = document.querySelector('.covid-cases');
         },
         async generateHtmlForWeather (city = 'Ghent') {
-            await fetch(`http://api.weatherapi.com/v1/current.json?key=b50b7fae602444dab76165810211112&q=$${city}`, {
+            await fetch(`https://api.weatherapi.com/v1/current.json?key=b50b7fae602444dab76165810211112&q=$${city}`, {
                 method: 'GET'
             })
             .then(result => {
