@@ -1,7 +1,7 @@
 * {
     margin: 0;
     scroll-behavior: smooth;
-    transition: all ease 0.3s;
+    transition: background-color ease 1s;
 }
 body {
     background-color: #010409;
@@ -108,7 +108,7 @@ header,
     padding-left: 0.3rem;
 }
 .user-light {
-    color: #c9d1d9;
+    color: #f8f8a5;
     background-color: #161b22; 
 }
 button,
@@ -360,7 +360,7 @@ main {
     gap: 1.5rem;
 }
 .box-socials a {
-    color: #010409;
+    color: #417fc5;
 }
 .box-socials a:hover {
     color: #417fc5;
@@ -400,6 +400,7 @@ main {
     border: 1px solid #636d79;
 }
 .switch__circle {
+    transition: all ease 0.5s;
     margin: 0.15rem;
     max-width: 4.7rem;
     width: 100%;
@@ -425,7 +426,12 @@ main {
     background-image: url(../media/images/moon.png);
 }
 
+/* Video */
+
 iframe {
     width: 100%;
-    height: 30rem;
+    height: 40rem;
+}
+.video-time {
+    color: #f8f8a5;
 }

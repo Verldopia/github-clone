@@ -22,7 +22,6 @@
             this.fetchHtmlForUsers();
             this.fetchGithubRepositories();
             this.fetchGithubUsers();
-            // this.fetchYoutubeVideos();
             this.colorTheme();
         },
         async fetchHtmlForUsers() {
@@ -40,6 +39,7 @@
                 .then(data => this.generateUsers(data))
         },
         generateUsers(user) {
+            this.$profile.style.display = "block";
             for (let i = 1; i < 2; i++) {
                 const userHTML = user.map((use) => {
                     return `
@@ -143,6 +143,7 @@
             })
         },
         generateGithubUsers(data) {
+            this.$profile.style.display = "block";
             for (let i = 1; i < 2; i++) {
             this.githubHTML = data.map((user) => {
                 return `
@@ -239,7 +240,7 @@
             }}).join('')
             this.$profile.innerHTML = this.userGH;
         },
-        async fetchYoutubeVideos(searchField = "cat") {
+        async fetchYoutubeVideos(searchField) {
             const key = "AIzaSyDIrCsu25cYlgw4qRhLhpMh9gLSrXKzdlk";
             await fetch(`https://www.googleapis.com/youtube/v3/search?key=${key}&part=snippet&maxResults=20&q=${searchField}`, {
                     method: 'GET',
@@ -276,19 +277,19 @@
                 }
             }
         },
-        generateYoutubeVideo (uniqueVideo, videoData) {
-                this.videoHTML = videoData.map((video) => {
+        generateYoutubeVideo(uniqueVideo, videoData) {
+            this.videoHTML = videoData.map((video) => {
+                if (uniqueVideo === video.etag) {
                     console.log(video)
-                    if (uniqueVideo === video.etag) {
-                        this.$h2Repos.innerHTML = "Youtube videos"
-                        this.$h3Repos.innerHTML = video.snippet.title
-                        return `
-                        <iframe
-                        src="https://www.youtube.com/embed/${video.id.videoId}">
-                        </iframe>
-                        `
-                    }}).join('')
-                this.$main.innerHTML = this.videoHTML;
+                    this.$h2Repos.innerHTML = "Youtube videos"
+                    this.$h3Repos.innerHTML = video.snippet.title
+                    return `
+                    <iframe src="https://www.youtube.com/embed/${video.id.videoId}"></iframe>
+                    <p class="video-time">Uploaded: ${new Date(video.snippet.publishTime).toDateString()}</p>
+                    <p class="video-description">${video.snippet.description}</p>`
+                }}).join('')
+            this.$main.innerHTML = this.videoHTML;
+            this.$profile.style.display = "none";
         },
         colorTheme() {
             this.$toggle.addEventListener('click', () => {
