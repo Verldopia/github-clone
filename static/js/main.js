@@ -9,22 +9,28 @@
             this.$githubRepos = document.querySelector('.github--repos');
             this.$githubFollowers = document.querySelector('.github--followers');
             this.$h3Repos = document.querySelector('.h3-main');
+            this.$h2Repos = document.querySelector('.h2-repos')
             this.$githubUser = document.querySelector('.users-github');
             this.$profile = document.querySelector('.box-profile');
             this.$toggle = document.querySelector('.switch');
             this.$boxGH = document.querySelector('.box-github--users');
             this.$boxPGM = document.querySelector('.box-users');
             this.$switch = document.querySelector('.switch__circle');
+            this.$main = document.querySelector('.box-github--main')
         },
         generateUI() {
             this.fetchHtmlForUsers();
             this.fetchGithubRepositories();
             this.fetchGithubUsers();
-            this.colorTheme();
             // this.fetchYoutubeVideos();
+            this.colorTheme();
         },
         async fetchHtmlForUsers() {
-            await fetch("static/data/pgm.json")
+            await fetch("static/data/pgm.json", {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
                 .then(result => {
                     if (!result.ok) {
                         throw Error('ERROR! this API is not found!');
@@ -158,8 +164,8 @@
             });
             this.$btnVideos = document.getElementById("search-video");
                 this.$btnVideos.addEventListener('click', () => {
-                // this.userName = document.getElementById("submit-user").value;
-                // this.fetchYoutubeVideos(this.userName);
+                this.userName = document.getElementById("submit-user").value;
+                this.fetchYoutubeVideos(this.userName);
             });
             this.$uniqueUser = document.querySelectorAll(".box-github");
             for (const $filter of this.$uniqueUser) {
@@ -233,35 +239,62 @@
             }}).join('')
             this.$profile.innerHTML = this.userGH;
         },
-        // Fetch Youtube Videos
-        // async fetchYoutubeVideos(searchField = "cat") {
-        // //     const key = "AIzaSyDIrCsu25cYlgw4qRhLhpMh9gLSrXKzdlk";
-        // //     await fetch(`https://www.googleapis.com/youtube/v3/search?key=${key}&part=snippet&maxResults=20&q=${searchField}`, {
-        // //             method: 'GET',
-        // //         })
-        // //         .then(result => {
-        // //             if (!result.ok) {
-        // //                 throw Error('ERROR! this API is not found!');
-        // //             }
-        // //             return result.json()
-        // //         })
-        // //         .then(data => {
-        // //             this.generateInterfaceForVideos(data.items);
-        // //         })
-        // // },
-        // // generateInterfaceForVideos (allVideos) {
-        // //     this.$main = document.querySelector('.box-github--main')
-        // //     console.log(allVideos)
-        // //     if (allVideos.length === 0) {
-        // //         this.$main.innerHTML = `<h3>No videos! That's what happens when you input a weird search... Rethink your life choices and come again</h3>`
-        // //     }
-        // }
+        async fetchYoutubeVideos(searchField = "cat") {
+            const key = "AIzaSyDIrCsu25cYlgw4qRhLhpMh9gLSrXKzdlk";
+            await fetch(`https://www.googleapis.com/youtube/v3/search?key=${key}&part=snippet&maxResults=20&q=${searchField}`, {
+                    method: 'GET',
+                })
+                .then(result => {
+                    if (!result.ok) {
+                        throw Error('ERROR! this API is not found!');
+                    }
+                    return result.json()
+                })
+                .then(data => {
+                    this.generateInterfaceForVideos(data.items);
+                })
+        },
+        generateInterfaceForVideos (allVideos) {
+            if (allVideos.length === 0) {
+                this.$main.innerHTML = `<h3>No videos! That's what happens when you input a weird search... Rethink your life choices and come again</h3>`
+            }
+            for (let i = 1; i < 2; i++) {
+                this.videoHTML = allVideos.map((video) => {
+                    return `
+                    <a class="box-video box-github box-user ${i++ % 2 !== 0 ? '' : 'user-light'}" data-video="${video.etag}">
+                        <img class="is-img" src="${video.snippet.thumbnails.default.url}">
+                        <p>${video.snippet.title}</p>
+                    </a>`
+                }).join('');
+                this.$githubUser.innerHTML = this.videoHTML;
+                this.$video = document.querySelectorAll(".box-video")
+                for (const $video of this.$video) {
+                    $video.addEventListener('click', () => {
+                        const videoDataSet = $video.dataset.video;
+                        this.generateYoutubeVideo(videoDataSet, allVideos);
+                    })
+                }
+            }
+        },
+        generateYoutubeVideo (uniqueVideo, videoData) {
+                this.videoHTML = videoData.map((video) => {
+                    console.log(video)
+                    if (uniqueVideo === video.etag) {
+                        this.$h2Repos.innerHTML = "Youtube videos"
+                        this.$h3Repos.innerHTML = video.snippet.title
+                        return `
+                        <iframe
+                        src="https://www.youtube.com/embed/${video.id.videoId}">
+                        </iframe>
+                        `
+                    }}).join('')
+                this.$main.innerHTML = this.videoHTML;
+        },
         colorTheme() {
             this.$toggle.addEventListener('click', () => {
                 if (this.$toggle) {
                     document.body.style.backgroundColor ="#FFFFFF";
                     document.body.style.color ="#010409";
-                    this.$githubUser.style.backgroundColor = "#FFFFFF";
                     this.$boxGH.style.backgroundColor = "#FFFFFF";
                     this.$boxPGM.style.backgroundColor = "#FFFFFF";
                     this.$switch.style.marginLeft= "calc(3.3rem - 0.15rem)";
@@ -269,7 +302,6 @@
                 } else {
                     document.body.style.backgroundColor ="";
                     document.body.style.color ="";
-                    this.$githubUser.style.backgroundColor = "";
                     this.$boxGH.style.backgroundColor = "";
                     this.$boxPGM.style.backgroundColor = "";
                     this.$switch.style.marginLeft ="";
