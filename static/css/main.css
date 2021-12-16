@@ -51,7 +51,7 @@ label {
 header {
     color: #c9d1d9;
     height: 4rem;
-    padding: 1rem 3rem 1rem 2rem;
+    padding: 1rem 2rem 1rem 2rem;
     background-color: #161b22;
     border-bottom: 1px solid #30363d;
 }
@@ -95,11 +95,12 @@ header,
     width: 2rem;
 }
 .weather img {
+    margin-left: 1rem;
     width: 4rem;
 }
 .temp,
 .weather p {
-    padding: 0.2rem 2rem 0.2rem 1.5rem;
+    padding: 0.3rem 1rem 0.2rem 1.5rem;
     background-color: #f8f8a5;
     color: #417fc5;
     border-radius: 0 1rem 1rem 0;
@@ -196,9 +197,11 @@ main {
     justify-content: flex-start;
     justify-content: center;
     flex-wrap: nowrap;
-    padding: 0.5rem 1rem 2rem;
+    padding: 1rem 0;
     height: 2rem;
-    margin: 0 1rem 1rem;
+}
+#submit-city {
+    height: 1.6rem;
 }
 #search-video {
     background-image: url(../media/images/youtube.png);
@@ -208,12 +211,14 @@ main {
     width: 3rem;
     padding: 0 1rem;
 }
-#search-user {
+#search-user,
+#search-city {
     background-image: url(../media/images/search.png);
     background-size: 1.4rem;
     background-repeat: no-repeat;
     background-position: center;
     width: 3rem;
+    height: 2rem;
     padding: 0 1rem;
 }
 #submit-user {
