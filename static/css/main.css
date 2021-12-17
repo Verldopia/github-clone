@@ -305,10 +305,12 @@ main {
 .box-follower {
     position: relative;
     width: 20%;
-    max-width: 30%;
+    max-width: 33%;
     flex-grow: 2;
+    overflow: hidden;
 }
 .box-follower img {
+    transition: all ease 0.2s;
     width: 100%;
 }
 .box-follower p {
@@ -321,11 +323,10 @@ main {
     width: calc(100% - 1rem);
     overflow: hidden;
 }
-.box-follower:hover {
+.box-follower img:hover {
     cursor: pointer;
     opacity: 75%;
-    transform: scale(105%);
-    overflow: hidden;
+    transform: scale(110%);
 }
 .container-pgm {
     position: relative;
