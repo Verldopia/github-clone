@@ -185,8 +185,7 @@ main {
     cursor: pointer;
 }
 .box-user:hover {
-    text-decoration: underline;
-    color: #417fc5;
+    background-color: #417fc5;
 }
 .box-text {
     display: flex;
@@ -273,9 +272,6 @@ main {
 .repos--titles p {
     font-size: 1rem;
     padding: 0 1rem;
-}
-.h3-main {
-    padding: 1rem 2rem 0;
 }
 .a-repos {
     padding: 0 1rem;
@@ -400,6 +396,7 @@ main {
     right: 21.25rem;
     width: 4rem;
     border-radius: 1rem;
+    opacity: 0;
 }
 #btn-totop:hover {
     color: #c9d1d9;
@@ -459,10 +456,16 @@ iframe {
 .video-time {
     color: #f8f8a5;
 }
-.video-time {
-    padding: 0.5rem 0;
-    margin: 1rem 2rem 2rem 2rem;
-    border-bottom: 1px solid #417fc5;
+.video-time,
+.h3-main {
+    background-color: #010409;
+    padding: 0.5rem 2rem;
+    margin: 1rem 0 2rem 0;
+    border-bottom: 1px solid #30363d;
+}
+.h3-main {
+    color: #f8f8a5;
+    margin: 3rem 2rem 0;
 }
 .video-description {
     padding: 0 2rem;
