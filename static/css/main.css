@@ -239,6 +239,8 @@ main {
     margin: 1rem 2rem 0.5rem;
 }
 .is-img {
+    height: min-content;
+    margin: auto 0;
     width: 3rem;
 }
 .container-main {
@@ -451,6 +453,8 @@ main {
 iframe {
     width: 100%;
     height: 40rem;
+    border: none;
+    border-radius: 1rem 1rem 0 0;
 }
 .video-time {
     color: #f8f8a5;

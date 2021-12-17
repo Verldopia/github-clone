@@ -1,3 +1,9 @@
+
+// require('../../dotenv').config();
+// console.log(path)
+// const API_KEY_YT = process.env.API_KEY_YT;
+// console.log(API_KEY_YT)
+
 (() => {
     const app = {
         init() {
@@ -159,7 +165,6 @@
         generateListeners(data) {
             this.$btnUser = document.getElementById("search-user");
             this.$btnUser.addEventListener('click', () => {
-                console.log(this.$btnUser)
                 this.userName = document.getElementById("submit-user").value;
                 this.fetchGithubUsers(this.userName);
             });
@@ -280,7 +285,6 @@
         generateYoutubeVideo(uniqueVideo, videoData) {
             this.videoHTML = videoData.map((video) => {
                 if (uniqueVideo === video.etag) {
-                    console.log(video)
                     this.$h2Repos.innerHTML = "Youtube videos"
                     this.$h3Repos.innerHTML = video.snippet.title
                     return `
