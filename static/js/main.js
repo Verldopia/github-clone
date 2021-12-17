@@ -22,7 +22,6 @@
             this.$boxGH = document.querySelector('.box-github--users');
             this.$boxPGM = document.querySelector('.box-users');
             this.$switch = document.querySelector('.switch__circle');
-            this.$main = document.querySelector('.box-github--main')
         },
         generateUI() {
             this.fetchHtmlForUsers();
@@ -45,7 +44,6 @@
                 .then(data => this.generateUsers(data))
         },
         generateUsers(user) {
-            this.$profile.style.display = "block";
             for (let i = 1; i < 2; i++) {
                 const userHTML = user.map((use) => {
                     return `
@@ -130,7 +128,7 @@
                     <p class="follower-login">${fol.login}</p>
                 </div>`
                 }).join('');
-                this.$githubFollowers.innerHTML = `<div class="container-followers">${followersHTML}</div>`;
+                this.$githubFollowers.innerHTML = `<h2>Followers</h2><div class="container-followers">${followersHTML}</div>`;
                 this.generateListenersPGM(followers);
             }
         },
@@ -262,7 +260,7 @@
         },
         generateInterfaceForVideos (allVideos) {
             if (allVideos.length === 0) {
-                this.$main.innerHTML = `<h3>No videos! That's what happens when you input a weird search... Rethink your life choices and come again</h3>`
+                this.$profile.innerHTML = `<h3>No videos! That's what happens when you input a weird search... Rethink your life choices and come again</h3>`
             }
             for (let i = 1; i < 2; i++) {
                 this.videoHTML = allVideos.map((video) => {
@@ -289,11 +287,12 @@
                     this.$h3Repos.innerHTML = video.snippet.title
                     return `
                     <iframe src="https://www.youtube.com/embed/${video.id.videoId}"></iframe>
-                    <p class="video-time">Uploaded: ${new Date(video.snippet.publishTime).toDateString()}</p>
+                    <p class="video-time">Premiered ${new Date(video.snippet.publishTime).toDateString()}</p>
                     <p class="video-description">${video.snippet.description}</p>`
                 }}).join('')
-            this.$main.innerHTML = this.videoHTML;
-            this.$profile.style.display = "none";
+            this.$profile.innerHTML = '';
+            this.$githubFollowers.innerHTML = '';
+            this.$githubRepos.innerHTML = this.videoHTML;
         },
         colorTheme() {
             this.$toggle.addEventListener('click', () => {

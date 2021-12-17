@@ -459,3 +459,12 @@ iframe {
 .video-time {
     color: #f8f8a5;
 }
+.video-time {
+    padding: 0.5rem 0;
+    margin: 1rem 2rem 2rem 2rem;
+    border-bottom: 1px solid #417fc5;
+}
+.video-description {
+    padding: 0 2rem;
+    margin-bottom: 5rem;
+}
