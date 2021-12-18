@@ -1,8 +1,7 @@
-
-// require('../../dotenv').config();
-// console.log(path)
-// const API_KEY_YT = process.env.API_KEY_YT;
-// console.log(API_KEY_YT)
+require("dotenv").config();
+const API_KEY_YT = process.env.API_KEY_YT;
+const API_KEY_REPOS = process.env.API_KEY_REPOS;
+console.log(process.env)
 
 (() => {
     const app = {
@@ -62,21 +61,21 @@
         },
         async fetchGithubRepositories(username = "pgmgent") {
             await fetch(`https://api.github.com/users/${username}/repos?page=1&per_page=25`, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': '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'
-                    }
-                })
-                .then(result => {
-                    if (!result.ok) {
-                        throw Error('ERROR! this API is not found!');
-                    }
-                    return result.json()
-                })
-                .then(data => {
-                    this.generateHtmlForRepositories(data, username)
-                    this.fetchGithubFollowers(username)
-                })
+                method: 'GET',
+                headers: {
+                    'Authorization': API_KEY_REPOS
+                }
+            })
+            .then(result => {
+                if (!result.ok) {
+                    throw Error('ERROR! this API is not found!');
+                }
+                return result.json()
+            })
+            .then(data => {
+                this.generateHtmlForRepositories(data, username)
+                this.fetchGithubFollowers(username)
+            })
         },
         generateHtmlForRepositories(data, username) {
             const amountResults = data.length;
@@ -96,23 +95,24 @@
                     </div>
                 </div>`
             }).join('');
+            this.$h2Repos.innerHTML = "Repositories"
             this.$h3Repos.innerHTML = `${amountResults} repository results for ${username}.`;
             this.$githubRepos.innerHTML = reposHTML;
         },
         async fetchGithubFollowers(username) {
             console.log('current user: ' + username)
             await fetch(` https://api.github.com/users/${username}/followers?page=1&per_page=100`, {
-                    method: 'GET'
-                })
-                .then(result => {
-                    if (!result.ok) {
-                        throw Error('ERROR! this API is not found!');
-                    }
-                    return result.json()
-                })
-                .then(data => {
-                    this.generateHtmlForFollowers(data)
-                })
+                method: 'GET'
+            })
+            .then(result => {
+                if (!result.ok) {
+                    throw Error('ERROR! this API is not found!');
+                }
+                return result.json()
+            })
+            .then(data => {
+                this.generateHtmlForFollowers(data)
+            })
         },
         generateHtmlForFollowers(followers) {
             if (followers.length === 0) {
@@ -179,8 +179,6 @@
                     this.generateProfileGH(data, category);
                 })
             };
-                
-            
         },
         generateListenersPGM(users) {
             this.$uniquePGM = document.querySelectorAll(".box-user");
@@ -244,19 +242,18 @@
             this.$profile.innerHTML = this.userGH;
         },
         async fetchYoutubeVideos(searchField) {
-            const key = "AIzaSyDIrCsu25cYlgw4qRhLhpMh9gLSrXKzdlk";
-            await fetch(`https://www.googleapis.com/youtube/v3/search?key=${key}&part=snippet&maxResults=20&q=${searchField}`, {
-                    method: 'GET',
-                })
-                .then(result => {
-                    if (!result.ok) {
-                        throw Error('ERROR! this API is not found!');
-                    }
-                    return result.json()
-                })
-                .then(data => {
-                    this.generateInterfaceForVideos(data.items);
-                })
+            await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY_YT}&part=snippet&maxResults=20&q=${searchField}`, {
+                method: 'GET',
+            })
+            .then(result => {
+                if (!result.ok) {
+                    throw Error('ERROR! this API is not found!');
+                }
+                return result.json()
+            })
+            .then(data => {
+                this.generateInterfaceForVideos(data.items);
+            })
         },
         generateInterfaceForVideos (allVideos) {
             if (allVideos.length === 0) {
