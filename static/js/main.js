@@ -1,7 +1,6 @@
-require("dotenv").config();
-const API_KEY_YT = process.env.API_KEY_YT;
-const API_KEY_REPOS = process.env.API_KEY_REPOS;
-console.log(process.env)
+// require("dotenv").config();
+// const API_KEY_YT = process.env.API_KEY_YT;
+// const API_KEY_REPOS = process.env.API_KEY_REPOS;
 
 (() => {
     const app = {
@@ -63,7 +62,7 @@ console.log(process.env)
             await fetch(`https://api.github.com/users/${username}/repos?page=1&per_page=25`, {
                 method: 'GET',
                 headers: {
-                    'Authorization': API_KEY_REPOS
+                    'Authorization': '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'
                 }
             })
             .then(result => {
@@ -242,7 +241,8 @@ console.log(process.env)
             this.$profile.innerHTML = this.userGH;
         },
         async fetchYoutubeVideos(searchField) {
-            await fetch(`https://www.googleapis.com/youtube/v3/search?key=${API_KEY_YT}&part=snippet&maxResults=20&q=${searchField}`, {
+            const key = 'AIzaSyDIrCsu25cYlgw4qRhLhpMh9gLSrXKzdlk'
+            await fetch(`https://www.googleapis.com/youtube/v3/search?key=${key}&part=snippet&maxResults=20&q=${searchField}`, {
                 method: 'GET',
             })
             .then(result => {
