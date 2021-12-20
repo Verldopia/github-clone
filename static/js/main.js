@@ -1,6 +1,7 @@
-// require("dotenv").config();
-// const API_KEY_YT = process.env.API_KEY_YT;
-// const API_KEY_REPOS = process.env.API_KEY_REPOS;
+require("dotenv").config();
+const API_KEY_YT = process.env.API_KEY_YT;
+const API_KEY_REPOS = process.env.API_KEY_REPOS;
+console.log(API_KEY_REPOS)
 
 (() => {
     const app = {
@@ -62,7 +63,7 @@
             await fetch(`https://api.github.com/users/${username}/repos?page=1&per_page=25`, {
                 method: 'GET',
                 headers: {
-                    'Authorization': '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'
+                    'Authorization': API_KEY_REPOS
                 }
             })
             .then(result => {
