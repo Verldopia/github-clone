@@ -14,12 +14,12 @@
         "teacher": true
     },
     { 
-        "first": "Gládis",
-        "last": "Gonçalves",
-        "email": "gladis.goncalves@example.com",
-        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/75.jpg",
-        "large": "https://randomuser.me/api/portraits/women/75.jpg",
-        "quote": "Life is soup, i am fork",
+        "first": "Cookie",
+        "last": "Monster",
+        "email": "cookies@example.com",
+        "thumbnail": "static/media/images/cookie-thmb.jpg",
+        "large": "static/media/images/cookie.jpg",
+        "quote": "Without my cookies, i'm just a monster.",
         "portfolio": {
             "githubUserName": "dindagladies",
             "linkedInUserName": "dindagladies"

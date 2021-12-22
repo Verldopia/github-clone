@@ -161,7 +161,6 @@ main {
 .box-github--users {
     overflow-y: auto;
     overflow-x: hidden;
-    background-color: #0e1117;
     max-width: 22rem;
     width: 100%;
     height: calc(100vh - 6rem - 1px);

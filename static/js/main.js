@@ -300,15 +300,11 @@
                 if (this.$toggle) {
                     document.body.style.backgroundColor ="#FFFFFF";
                     document.body.style.color ="#010409";
-                    this.$boxGH.style.backgroundColor = "#FFFFFF";
-                    this.$boxPGM.style.backgroundColor = "#FFFFFF";
                     this.$switch.style.marginLeft= "calc(3.3rem - 0.15rem)";
                     this.$toggle = false;
                 } else {
                     document.body.style.backgroundColor ="";
                     document.body.style.color ="";
-                    this.$boxGH.style.backgroundColor = "";
-                    this.$boxPGM.style.backgroundColor = "";
                     this.$switch.style.marginLeft ="";
                     this.$toggle = true;
                 }
