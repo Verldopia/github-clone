@@ -9,6 +9,8 @@
         cacheElements () {
             this.$weather = document.querySelector('.weather');
             this.$covidCases = document.querySelector('.covid-cases');
+            this.$btn = document.getElementById("search-city");
+            this.$city = document.getElementById("submit-city");
         },
         async generateHtmlForWeather (city = 'Ghent') {
             await fetch(`https://api.weatherapi.com/v1/current.json?key=b50b7fae602444dab76165810211112&q=$${city}`, {
@@ -47,11 +49,14 @@
             document.querySelector('.logo').addEventListener('click', () => {
                 document.location.href = 'index.html';
             });
-            this.$btn = document.getElementById("search-city");
             this.$btn.addEventListener('click', () => {
-                const city = document.getElementById("submit-city").value;
-                this.generateHtmlForWeather(city)
+                this.generateHtmlForWeather(this.$city.value);
             });
+            this.$city.addEventListener('keypress', (event) => {
+                if (event.keyCode === 13) {
+                    this.generateHtmlForWeather(this.$city.value);
+                }
+            })
         }
     };
     app.init()

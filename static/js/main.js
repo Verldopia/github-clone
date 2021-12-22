@@ -20,6 +20,7 @@
             this.$boxGH = document.querySelector('.box-github--users');
             this.$boxPGM = document.querySelector('.box-users');
             this.$switch = document.querySelector('.switch__circle');
+            this.$userName = document.getElementById("submit-user");
         },
         generateUI() {
             this.fetchHtmlForUsers();
@@ -162,13 +163,16 @@
         generateListeners(data) {
             this.$btnUser = document.getElementById("search-user");
             this.$btnUser.addEventListener('click', () => {
-                this.userName = document.getElementById("submit-user").value;
-                this.fetchGithubUsers(this.userName);
+                this.fetchGithubUsers(this.$userName.value);
             });
+            this.$userName.addEventListener('keypress', (event) => {
+                if (event.keyCode === 13) {
+                    this.fetchGithubUsers(this.$userName.value);
+                }
+            })
             this.$btnVideos = document.getElementById("search-video");
                 this.$btnVideos.addEventListener('click', () => {
-                this.userName = document.getElementById("submit-user").value;
-                this.fetchYoutubeVideos(this.userName);
+                this.fetchYoutubeVideos(this.$userName.value);
             });
             this.$uniqueUser = document.querySelectorAll(".box-github");
             for (const $filter of this.$uniqueUser) {
