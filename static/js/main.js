@@ -1,7 +1,3 @@
-// require("dotenv").config();
-// const API_KEY_YT = process.env.API_KEY_YT;
-// const API_KEY_REPOS = process.env.API_KEY_REPOS;
-
 (() => {
     const app = {
         init() {
