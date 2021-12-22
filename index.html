@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="https://use.typekit.net/joh1vhg.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="static/media/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/media/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/media/favicon/favicon-16x16.png">
+    <title>Github Dashboard</title>
+</head>
+<body>
+    <header>
+        <div class="box-logo">
+            <div class="logo "></div>
+            <div class="switch">
+                <div class="switch__circle"></div>
+                <div class="moon"></div>
+                <div class="sun"></div>
+            </div>
+        </div>
+
+        <div class="covid-cases"></div>
+        <label for="submit-city">Search for your favorite city!</label>
+        <input type="text" placeholder="Tallinn, Estonia!" id="submit-city">
+        <button type="button" id="search-city"></button>
+        <div class="box-header">
+            <div class="weather"></div>
+        </div>
+    </header>
+    
+    <main>
+        <div class="box-users">
+            <h2>PGM Team</h2>
+            <div class="users"></div>
+        </div>
+
+        <div class="container-main">
+            <button id="btn-totop" href="index.html">/\</button>
+            <div class="box-profile"></div>
+            <h2 class="h2-repos"></h2>
+            <h3 class="h3-main"></h3>
+            <div class="box-github--main">
+                <div class="github--repos"></div>
+                <div class="github--followers"></div>
+            </div>
+        </div>
+        
+        <div class="box-github--users">
+            <h2>Github Users</h2>
+            
+            <div class="box-github--search">
+                <div class="box-search--users">
+                <input type="text" placeholder="Santa Claus" id="submit-user">
+                <button type="button" id="search-user"></button>
+                <button type="button" id="search-video"></button>
+            </div>
+        </div>
+        <div class="users-github"></div>
+        
+        </div>
+    </main>
+    <script src="static/js/services.js"></script>
+    <script src="static/js/main.js"></script>
+    <script src="static/js/btn-totop.js"></script>
+</body>
+</html>
